@@ -1,7 +1,7 @@
 # CoordinatorKit.podspec
 Pod::Spec.new do |s|
   s.name             = 'CoordinatorKit'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0'
   s.summary          = 'Reusable coordinator & router for UIKit projects.'
   s.description      = <<-DESC
 A tiny, production-ready coordinator/router for UIKit.
