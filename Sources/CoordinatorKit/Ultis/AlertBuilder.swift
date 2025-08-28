@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+@MainActor
 struct AlertDrawable: Drawable {
     let viewController: UIViewController?
     var canDelegate: Bool { false }
@@ -16,6 +17,7 @@ struct AlertDrawable: Drawable {
     }
 }
 
+@MainActor
 final class AlertBuilder {
     private let alert: UIAlertController
 
@@ -28,14 +30,7 @@ final class AlertBuilder {
                    style: UIAlertAction.Style = .default,
                    handler: (() -> Void)? = nil) -> AlertBuilder {
         let action = UIAlertAction(title: title, style: style) { _ in handler?() }
-
-        if Thread.isMainThread {
-            alert.addAction(action)
-        } else {
-            DispatchQueue.main.async {
-                self.alert.addAction(action)
-            }
-        }
+        alert.addAction(action)
         return self
     }
 
@@ -43,4 +38,5 @@ final class AlertBuilder {
         return AlertDrawable(alert: alert)
     }
 }
+
 
