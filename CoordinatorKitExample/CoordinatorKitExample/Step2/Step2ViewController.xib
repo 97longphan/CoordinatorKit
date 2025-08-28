@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Step2ViewController" customModule="TestPod" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NYJ-eT-w1b">
+                    <rect key="frame" x="130.66666666666666" y="421" width="131.99999999999997" height="35"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Push to Step3"/>
+                    <connections>
+                        <action selector="pushToStep3Action:" destination="-1" eventType="touchUpInside" id="2e4-ZT-h05"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heO-2w-Glv">
+                    <rect key="frame" x="135.33333333333334" y="356" width="122.66666666666666" height="35"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Pop to step 1"/>
+                    <connections>
+                        <action selector="popToStep1Action:" destination="-1" eventType="touchUpInside" id="ndR-Ma-hfN"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEy-NQ-Ulw">
+                    <rect key="frame" x="159" y="493" width="84" height="35"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Dismiss"/>
+                    <connections>
+                        <action selector="dismissACTION:" destination="-1" eventType="touchUpInside" id="2AF-Fq-NS1"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="NYJ-eT-w1b" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="3TD-UE-bNr"/>
+                <constraint firstItem="NYJ-eT-w1b" firstAttribute="top" secondItem="heO-2w-Glv" secondAttribute="bottom" constant="30" id="4Q7-Oh-l8X"/>
+                <constraint firstItem="NYJ-eT-w1b" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="keO-LH-4rC"/>
+                <constraint firstItem="heO-2w-Glv" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="zyP-gZ-xdo"/>
+            </constraints>
+            <point key="canvasLocation" x="15" y="20"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
