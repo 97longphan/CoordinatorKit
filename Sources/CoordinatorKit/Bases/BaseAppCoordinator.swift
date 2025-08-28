@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 open class BaseAppCoordinator<Factory: FlowFactory>: Coordinator {
     public weak var parentCoordinator: Coordinator?

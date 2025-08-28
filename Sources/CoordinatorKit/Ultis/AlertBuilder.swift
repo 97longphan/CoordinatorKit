@@ -16,7 +16,7 @@ struct AlertDrawable: Drawable {
     }
 }
 
-class AlertBuilder {
+final class AlertBuilder {
     private let alert: UIAlertController
 
     init(title: String?, message: String?, style: UIAlertController.Style = .alert) {
@@ -27,10 +27,15 @@ class AlertBuilder {
     func addAction(title: String,
                    style: UIAlertAction.Style = .default,
                    handler: (() -> Void)? = nil) -> AlertBuilder {
-        let action = UIAlertAction(title: title, style: style) { _ in
-            handler?()
+        let action = UIAlertAction(title: title, style: style) { _ in handler?() }
+
+        if Thread.isMainThread {
+            alert.addAction(action)
+        } else {
+            DispatchQueue.main.async {
+                self.alert.addAction(action)
+            }
         }
-        alert.addAction(action)
         return self
     }
 
@@ -38,3 +43,4 @@ class AlertBuilder {
         return AlertDrawable(alert: alert)
     }
 }
+
