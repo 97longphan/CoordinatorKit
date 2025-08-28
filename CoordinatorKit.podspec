@@ -8,7 +8,7 @@ A tiny, production-ready coordinator/router for UIKit.
 Push/present helpers, back/dismiss callbacks, and alert builder.
   DESC
 
-  s.homepage         = 'https://github.com/yourname/CoordinatorKit'
+  s.homepage         = 'https://github.com/97longphan/CoordinatorKit'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'LONGPHAN' => 'your-email@example.com' }
 
