@@ -1,7 +1,7 @@
 # CoordinatorKit.podspec
 Pod::Spec.new do |s|
   s.name             = 'CoordinatorKit'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'Reusable coordinator & router for UIKit projects.'
   s.homepage         = 'https://github.com/97longphan/CoordinatorKit'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
