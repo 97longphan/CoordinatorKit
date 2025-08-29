@@ -45,7 +45,7 @@ class TabbarCoordinator: Coordinator {
             
             navController.tabBarItem = UITabBarItem(
                 title: tab.title,
-                image: UIImage(systemName: tab.icon),
+                image: UIImage(named: "\(tab.icon)"),
                 tag: tab.rawValue
             )
             viewControllers.append(navController)

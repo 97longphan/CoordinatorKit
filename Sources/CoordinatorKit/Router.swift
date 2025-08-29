@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - Drawable
 
-@MainActor
+
 /// Giao diện đại diện cho bất kỳ thành phần nào có thể được hiển thị (VC)
 public protocol Drawable {
     var viewController: UIViewController? { get }
@@ -27,7 +27,7 @@ public typealias NavigationBackClosure = (() -> Void)
 
 // MARK: - RouterProtocol
 
-@MainActor
+
 public protocol RouterProtocol: AnyObject {
     var navigationController: UINavigationController { get }
     
@@ -65,7 +65,7 @@ private struct RouterContext {
 }
 
 // MARK: - Router
-@MainActor
+
 public final class Router: NSObject, RouterProtocol {
     
     // MARK: Properties

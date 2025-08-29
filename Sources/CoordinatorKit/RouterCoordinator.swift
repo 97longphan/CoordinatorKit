@@ -24,7 +24,7 @@ public protocol RouterCoordinator: Coordinator {
 }
 
 extension RouterCoordinator {
-    @MainActor
+    
     public func perform<V: UIViewController>(
         _ viewController: V,
         isAnimated: Bool = true,

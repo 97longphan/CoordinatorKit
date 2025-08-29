@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-@MainActor
 struct AlertDrawable: Drawable {
     let viewController: UIViewController?
     var canDelegate: Bool { false }
@@ -17,7 +16,6 @@ struct AlertDrawable: Drawable {
     }
 }
 
-@MainActor
 final class AlertBuilder {
     private let alert: UIAlertController
 

@@ -10,7 +10,7 @@ import UIKit
 
 public protocol FlowRoute {}
 
-@MainActor
+
 public protocol FlowFactory {
     associatedtype Route: FlowRoute
     func make(_ route: Route, parent: Coordinator?) -> (UIViewController, Coordinator)
