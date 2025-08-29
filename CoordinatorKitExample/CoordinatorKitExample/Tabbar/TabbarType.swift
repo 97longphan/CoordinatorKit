@@ -27,6 +27,7 @@ enum TabbarType: Int, CaseIterable {
         }
     }
 
+    @MainActor
     func makeCoordinator(router: Router) -> Coordinator {
         switch self {
         case .tab1:
