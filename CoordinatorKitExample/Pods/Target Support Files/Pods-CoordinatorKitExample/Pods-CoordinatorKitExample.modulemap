@@ -1,6 +1,0 @@
-framework module Pods_CoordinatorKitExample {
-  umbrella header "Pods-CoordinatorKitExample-umbrella.h"
-
-  export *
-  module * { export * }
-}
