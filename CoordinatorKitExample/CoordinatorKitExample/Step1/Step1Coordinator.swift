@@ -43,3 +43,11 @@ extension Step1Coordinator: Step1ViewControllerDelegate {
         step2.start()
     }
 }
+
+final class Step1DeeplinkPlugin: CKDeepLinkPlugin {
+    let path = "step1"
+
+    func buildCoordinator(component: CKDeeplinkPluginComponent, router: RouterProtocol) -> Coordinator? {
+        Step1Coordinator(router: router, presentationStyle: .push, context: .init(message: "Data present from Step1DeeplinkPlugin"))
+    }
+}

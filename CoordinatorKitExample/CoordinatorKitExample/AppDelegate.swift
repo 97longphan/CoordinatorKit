@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoordinatorKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,9 +22,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let coordinator = MyAppCoordinator(window: window, factory: MyAppFlowFactory())
         self.appCoordinator = coordinator
+        let plugins = createDeepLinkPlugins()
+        CKDeeplinkManager.shared.setup(delegate: coordinator, plugins: plugins)
         coordinator.start()
         
         return true
+    }
+    
+    
+    func application(
+        _ app: UIApplication,
+        open url: URL,
+        options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+    ) -> Bool {
+        CKDeeplinkManager.shared.handle(url: url)
+        return true
+    }
+    
+    private func createDeepLinkPlugins() -> [CKDeepLinkPlugin] {
+        return [Step1DeeplinkPlugin()]
     }
 }
 

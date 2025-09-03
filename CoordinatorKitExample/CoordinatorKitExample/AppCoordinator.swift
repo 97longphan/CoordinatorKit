@@ -7,6 +7,7 @@
 
 import Foundation
 import CoordinatorKit
+typealias PendingDeeplink = (component: CKDeeplinkPluginComponent, plugin: CKDeepLinkPlugin)
 
 enum AppRoute: FlowRoute {
     case login
@@ -44,6 +45,7 @@ protocol AppLogoutDelegate: AnyObject {
 
 final class MyAppCoordinator: BaseAppCoordinator<MyAppFlowFactory> {
     private let session: SessionManaging
+    private var pendingDeeplink: PendingDeeplink?
     
     init(window: UIWindow,
          factory: MyAppFlowFactory,
@@ -57,12 +59,26 @@ final class MyAppCoordinator: BaseAppCoordinator<MyAppFlowFactory> {
     override func initialRoute() -> BaseAppCoordinator<MyAppFlowFactory>.Route {
         return session.isLoggedIn ? .tabbar : .login
     }
+    
+    private func performDeepLink(component: CKDeeplinkPluginComponent, plugin: CKDeepLinkPlugin, router: RouterProtocol) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+            guard let self = self, let coordinator = plugin.buildCoordinator(component: component, router: router) else { return }
+            
+            coordinator.parentCoordinator = self
+            children.append(coordinator)
+            coordinator.start()
+        }
+    }
 }
 
 extension MyAppCoordinator: LoginCoordinatorDelegate {
     func didLoggedIn() {
         session.login()
         navigate(to: .tabbar)
+        if let deeplink = pendingDeeplink {
+            handleDeeplink(component: deeplink.component, plugin: deeplink.plugin)
+            pendingDeeplink = nil
+        }
     }
 }
 
@@ -75,3 +91,14 @@ extension MyAppCoordinator: AppLogoutDelegate {
     }
 }
 
+
+extension MyAppCoordinator: CKDeeplinkHandlerDelegate {
+    func handleDeeplink(component: CoordinatorKit.CKDeeplinkPluginComponent, plugin: CoordinatorKit.CKDeepLinkPlugin) {
+        if session.isLoggedIn, let router = deepestVisibleRouterCoordinator?.router {
+            performDeepLink(component: component, plugin: plugin, router: router)
+        } else {
+            print("🔒 Chưa đăng nhập, lưu deeplink để xử lý sau")
+            pendingDeeplink = (component, plugin)
+        }
+    }
+}
