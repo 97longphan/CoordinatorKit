@@ -8,14 +8,20 @@
 import Foundation
 import UIKit
 import CoordinatorKit
+protocol TabbarCoordinatorDelegate: AnyObject {}
 
 protocol TabbarDelegate: AnyObject {
     func changeTabbarTo(_ tabbarType: TabbarType)
 }
 
-class TabbarCoordinator: Coordinator {
+class TabbarCoordinator: Coordinator, ActiveChildCoordinator {
     // MARK: - Properties
     
+    var activeChildCoordinator: Coordinator? {
+        children[safe: tabBarController.selectedIndex]
+    }
+    
+    weak var delegate: TabbarCoordinatorDelegate?
     weak var parentCoordinator: Coordinator?
     var children: [Coordinator] = []
     
@@ -55,17 +61,15 @@ class TabbarCoordinator: Coordinator {
     }
 }
 
+extension Array {
+    subscript(safe index: Int) -> Element? {
+        indices.contains(index) ? self[index] : nil
+    }
+}
 
 extension TabbarCoordinator: TabbarDelegate {
     func changeTabbarTo(_ tabbarType: TabbarType) {
         tabBarController.selectedIndex = tabbarType.rawValue
     }
-}
-
-extension TabbarCoordinator {
-//    var currentTabCoordinator: Coordinator? {
-//        let index = tabBarController.selectedIndex
-//        return children[safe: index]
-//    }
 }
 

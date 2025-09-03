@@ -17,6 +17,7 @@ final class MyAppFlowFactory: FlowFactory {
     typealias Route = AppRoute
     
     weak var loginCoordinatorDelegate: LoginCoordinatorDelegate?
+    weak var tabbarCoordinatorDelegate: TabbarCoordinatorDelegate?
     
     func make(_ route: AppRoute, parent: Coordinator?) -> (UIViewController, Coordinator) {
         switch route {
@@ -29,6 +30,7 @@ final class MyAppFlowFactory: FlowFactory {
         case .tabbar:
             let tabbar = UITabBarController()
             let coordinator = TabbarCoordinator(tabBarController: tabbar)
+            coordinator.delegate = tabbarCoordinatorDelegate
             coordinator.parentCoordinator = parent
             return (tabbar, coordinator)
         }
@@ -49,6 +51,7 @@ final class MyAppCoordinator: BaseAppCoordinator<MyAppFlowFactory> {
         self.session = session
         super.init(window: window, factory: factory)
         factory.loginCoordinatorDelegate = self
+        factory.tabbarCoordinatorDelegate = self
     }
     
     override func initialRoute() -> BaseAppCoordinator<MyAppFlowFactory>.Route {
@@ -63,9 +66,12 @@ extension MyAppCoordinator: LoginCoordinatorDelegate {
     }
 }
 
+extension MyAppCoordinator: TabbarCoordinatorDelegate {}
+
 extension MyAppCoordinator: AppLogoutDelegate {
     func didLogout() {
         session.logout()
         navigate(to: .login)
     }
 }
+
