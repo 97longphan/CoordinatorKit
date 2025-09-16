@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B0139B72E78007000AB8347 /* StepContextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0139B42E78007000AB8347 /* StepContextViewController.swift */; };
+		6B0139B82E78007000AB8347 /* StepContextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B0139B52E78007000AB8347 /* StepContextViewController.xib */; };
+		6B0139B92E78007000AB8347 /* StepContextCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0139B62E78007000AB8347 /* StepContextCoordinator.swift */; };
+		6B0139BB2E78008800AB8347 /* Step1DeeplinkPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0139BA2E78008800AB8347 /* Step1DeeplinkPlugin.swift */; };
+		6B602F722E78058E00961CB3 /* StepContextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B602F712E78058E00961CB3 /* StepContextViewModel.swift */; };
+		6B602F742E78071500961CB3 /* Step1ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B602F732E78071500961CB3 /* Step1ViewModel.swift */; };
 		6BDDEB112E5C5C5A00489A20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDDEB102E5C5C5A00489A20 /* AppDelegate.swift */; };
 		6BDDEB1A2E5C5C5C00489A20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BDDEB192E5C5C5C00489A20 /* Assets.xcassets */; };
 		6BDDEB1D2E5C5C5C00489A20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BDDEB1B2E5C5C5C00489A20 /* LaunchScreen.storyboard */; };
@@ -37,6 +43,12 @@
 
 /* Begin PBXFileReference section */
 		34D9453C2CD74B0A4A74F36B /* Pods-CoordinatorKitExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoordinatorKitExample.debug.xcconfig"; path = "Target Support Files/Pods-CoordinatorKitExample/Pods-CoordinatorKitExample.debug.xcconfig"; sourceTree = "<group>"; };
+		6B0139B42E78007000AB8347 /* StepContextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepContextViewController.swift; sourceTree = "<group>"; };
+		6B0139B52E78007000AB8347 /* StepContextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepContextViewController.xib; sourceTree = "<group>"; };
+		6B0139B62E78007000AB8347 /* StepContextCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepContextCoordinator.swift; sourceTree = "<group>"; };
+		6B0139BA2E78008800AB8347 /* Step1DeeplinkPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step1DeeplinkPlugin.swift; sourceTree = "<group>"; };
+		6B602F712E78058E00961CB3 /* StepContextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepContextViewModel.swift; sourceTree = "<group>"; };
+		6B602F732E78071500961CB3 /* Step1ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step1ViewModel.swift; sourceTree = "<group>"; };
 		6BDDEB0D2E5C5C5A00489A20 /* CoordinatorKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoordinatorKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BDDEB102E5C5C5A00489A20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BDDEB192E5C5C5C00489A20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -97,6 +109,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6B0139B32E78007000AB8347 /* StepContext */ = {
+			isa = PBXGroup;
+			children = (
+				6B0139B42E78007000AB8347 /* StepContextViewController.swift */,
+				6B0139B52E78007000AB8347 /* StepContextViewController.xib */,
+				6B0139B62E78007000AB8347 /* StepContextCoordinator.swift */,
+				6B602F712E78058E00961CB3 /* StepContextViewModel.swift */,
+			);
+			path = StepContext;
+			sourceTree = "<group>";
+		};
 		6BDDEB042E5C5C5A00489A20 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +141,7 @@
 		6BDDEB0F2E5C5C5A00489A20 /* CoordinatorKitExample */ = {
 			isa = PBXGroup;
 			children = (
+				6B0139B32E78007000AB8347 /* StepContext */,
 				6BDDEB4E2E5C5FC000489A20 /* Login */,
 				6BDDEB522E5C5FC000489A20 /* SessionManager.swift */,
 				6BDDEB2F2E5C5D5D00489A20 /* Step1 */,
@@ -167,9 +191,11 @@
 		6BDDEB2F2E5C5D5D00489A20 /* Step1 */ = {
 			isa = PBXGroup;
 			children = (
+				6B0139BA2E78008800AB8347 /* Step1DeeplinkPlugin.swift */,
 				6BDDEB302E5C5D5D00489A20 /* Step1Coordinator.swift */,
 				6BDDEB312E5C5D5D00489A20 /* Step1ViewController.xib */,
 				6BDDEB322E5C5D5D00489A20 /* Step1ViewController.swift */,
+				6B602F732E78071500961CB3 /* Step1ViewModel.swift */,
 			);
 			path = Step1;
 			sourceTree = "<group>";
@@ -270,6 +296,7 @@
 				6BDDEB442E5C5D5D00489A20 /* Step1ViewController.xib in Resources */,
 				6BDDEB4A2E5C5D5D00489A20 /* Step3ViewController.xib in Resources */,
 				6BDDEB402E5C5D5D00489A20 /* Tabbar1ViewController.xib in Resources */,
+				6B0139B82E78007000AB8347 /* StepContextViewController.xib in Resources */,
 				6BDDEB1A2E5C5C5C00489A20 /* Assets.xcassets in Resources */,
 				6BDDEB482E5C5D5D00489A20 /* Step2ViewController.xib in Resources */,
 			);
@@ -324,16 +351,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B0139B92E78007000AB8347 /* StepContextCoordinator.swift in Sources */,
 				6BDDEB422E5C5D5D00489A20 /* Tabbar1ViewController.swift in Sources */,
 				6BDDEB462E5C5D5D00489A20 /* Step2ViewController.swift in Sources */,
 				6BDDEB492E5C5D5D00489A20 /* Step3ViewController.swift in Sources */,
+				6B0139BB2E78008800AB8347 /* Step1DeeplinkPlugin.swift in Sources */,
 				6BDDEB412E5C5D5D00489A20 /* Tabbar1Coordinator.swift in Sources */,
 				6BDDEB432E5C5D5D00489A20 /* Step1Coordinator.swift in Sources */,
 				6BDDEB112E5C5C5A00489A20 /* AppDelegate.swift in Sources */,
 				6BDDEB4D2E5C5D9400489A20 /* AppCoordinator.swift in Sources */,
 				6BDDEB4B2E5C5D5D00489A20 /* Step3Coordinator.swift in Sources */,
+				6B602F722E78058E00961CB3 /* StepContextViewModel.swift in Sources */,
 				6BDDEB452E5C5D5D00489A20 /* Step1ViewController.swift in Sources */,
 				6BDDEB3E2E5C5D5D00489A20 /* TabbarType.swift in Sources */,
+				6B0139B72E78007000AB8347 /* StepContextViewController.swift in Sources */,
+				6B602F742E78071500961CB3 /* Step1ViewModel.swift in Sources */,
 				6BDDEB472E5C5D5D00489A20 /* Step2Coordinator.swift in Sources */,
 				6BDDEB3D2E5C5D5D00489A20 /* Tabbar2ViewController.swift in Sources */,
 				6BDDEB552E5C5FC000489A20 /* LoginViewController.swift in Sources */,

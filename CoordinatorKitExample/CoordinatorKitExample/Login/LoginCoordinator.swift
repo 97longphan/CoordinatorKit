@@ -28,5 +28,3 @@ extension LoginCoordinator: LoginViewControllerDelegate {
         delegate?.didLoggedIn()
     }
 }
-
-

@@ -14,10 +14,15 @@ struct StepContext {
 }
 
 class Step1Coordinator: BaseRouterContextCoordinator<StepContext> {
+    private var viewModel: Step1ViewModel!
+    
     override func start() {
-        let vc = Step1ViewController()
-        vc.delegate = self
-        vc.context = context
+        let viewModel = Step1ViewModel()
+        viewModel.context = context
+        viewModel.delegate = self
+        self.viewModel = viewModel
+        let vc = Step1ViewController(viewModel: viewModel)
+        
         
         perform(vc, from: self) { [weak self] in
             guard let self = self  else { return }
@@ -26,7 +31,7 @@ class Step1Coordinator: BaseRouterContextCoordinator<StepContext> {
     }
 }
 
-extension Step1Coordinator: Step1ViewControllerDelegate {
+extension Step1Coordinator: Step1ViewModelDelegate {
     func onPushToStep2() {
         let step2 = Step2Coordinator(router: router,
                                      presentationStyle: .push,
@@ -42,12 +47,21 @@ extension Step1Coordinator: Step1ViewControllerDelegate {
         children.append(step2)
         step2.start()
     }
-}
-
-final class Step1DeeplinkPlugin: CKDeepLinkPlugin {
-    let path = "step1"
-
-    func buildCoordinator(component: CKDeeplinkPluginComponent, router: RouterProtocol) -> Coordinator? {
-        Step1Coordinator(router: router, presentationStyle: .push, context: .init(message: "Data present from Step1DeeplinkPlugin"))
+    
+    func pushToContext() {
+        let contextStep = StepContextCoordinator(router: router, presentationStyle: .push, context: SpecialContext(id: 1, mgs: ""))
+        contextStep.parentCoordinator = self
+        children.append(contextStep)
+        contextStep.start()
     }
 }
+
+extension Step1Coordinator: FinishStepContextDelegate {
+    func didFinishFlow(contextChanged: SpecialContext) {
+        router.popToCoordinator(coordinator: self, isAnimated: true, completion: { [weak self] in
+            print("context changed: \(contextChanged)")
+            self?.viewModel.printStepContextAfter()
+        })
+    }
+}
+

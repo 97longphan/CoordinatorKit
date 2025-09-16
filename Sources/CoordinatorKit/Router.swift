@@ -40,7 +40,7 @@ public protocol RouterProtocol: AnyObject {
     
     func popToRootCoordinator(isAnimated: Bool)
     
-    func popToCoordinator(coordinator: Coordinator, isAnimated: Bool)
+    func popToCoordinator(coordinator: Coordinator, isAnimated: Bool, completion: (() -> Void)?)
     
     func present(drawable: Drawable,
                  coordinator: Coordinator,
@@ -125,7 +125,7 @@ public final class Router: NSObject, RouterProtocol {
         navigationController.popToRootViewController(animated: isAnimated)
     }
     
-    public func popToCoordinator(coordinator: Coordinator, isAnimated: Bool) {
+    public func popToCoordinator(coordinator: Coordinator, isAnimated: Bool, completion: (() -> Void)?) {
         let id = ObjectIdentifier(coordinator)
         guard let toVC = coordinatorContexts[id]?.viewController else {
             print("⚠️ Không tìm thấy ViewController tương ứng với \(coordinator)")
@@ -147,6 +147,13 @@ public final class Router: NSObject, RouterProtocol {
         for vc in poppedVCs {
             executeClosure(for: vc)
         }
+        
+        CATransaction.begin()
+            CATransaction.setCompletionBlock {
+                completion?()
+            }
+            navigationController.popToViewController(toVC, animated: isAnimated)
+            CATransaction.commit()
         
         navigationController.popToViewController(toVC, animated: isAnimated)
     }
